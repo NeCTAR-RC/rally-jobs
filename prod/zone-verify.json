@@ -1,0 +1,127 @@
+{
+    "NovaServers.boot_and_delete_server": [
+        {
+            "args": {
+                "flavor": {
+                    "name": {{ flavour_name }}
+                },
+                "image": {
+                    "id": {{ image_id }}
+                },
+                "availability_zone": {{ availability_zone }},
+                "force_delete": false
+            },
+            "runner": {
+                "type": "constant",
+                "times": 3,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "NovaServers.snapshot_server": [
+        {
+            "args": {
+                "flavor": {
+                    "name": {{ flavour_name }}
+                },
+                "image": {
+                    "id": {{ image_id }}
+                },
+                "availability_zone": {{ availability_zone }},
+                "force_delete": false
+            },
+            "runner": {
+                "type": "constant",
+                "times": 3,
+                "concurrency": 1
+            },
+            "context": {}
+        }
+    ],
+    "CinderVolumes.create_and_delete_volume": [
+        {
+            "args": {
+                "size": 1,
+                "availability_zone": {{ availability_zone }}
+            },
+            "runner": {
+                "type": "constant",
+                "times": 3,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        },
+        {
+            "args": {
+                "size": 10,
+                "image": {
+                    "id": {{ image_id }}
+                },
+                "availability_zone": {{ availability_zone }}
+            },
+            "runner": {
+                "type": "constant",
+                "times": 3,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "CinderVolumes.create_and_extend_volume": [
+        {
+            "args": {
+                "size": {
+                    "min": 1,
+                    "max": 5
+                },
+                "new_size": {
+                    "min": 6,
+                    "max": 10
+                },
+                "availability_zone": {{ availability_zone }}
+            },
+            "runner": {
+                "type": "constant",
+                "times": 3,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "CinderVolumes.create_and_attach_volume": [
+        {
+            "args": {
+                "size": 10,
+                "image": {
+                    "id": {{ image_id }}
+                },
+                "flavor": {
+                    "name": {{ flavour_name }}
+                },
+                "availability_zone": {{ availability_zone }}
+            },
+            "runner": {
+                "type": "constant",
+                "times": 3,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ]
+}
