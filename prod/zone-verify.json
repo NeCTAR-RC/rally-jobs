@@ -39,7 +39,10 @@
                 "times": 3,
                 "concurrency": 1
             },
-            "context": {}
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
         }
     ],
     "CinderVolumes.create_and_delete_volume": [
