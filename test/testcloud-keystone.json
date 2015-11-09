@@ -1,0 +1,127 @@
+{
+    "KeystoneBasic.create_tenant_with_users": [
+        {
+            "args": {
+                "name_length": 10,
+                "users_per_tenant": 10
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 10
+            },
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "KeystoneBasic.create_user_update_password": [
+        {
+            "args": {
+                "name_length": 10,
+                "password_length": 10
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 2
+            },
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "Authenticate.keystone": [
+        {
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 2
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "Authenticate.validate_nova": [
+        {
+            "args": {
+                "repetitions": 2
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 5
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "Authenticate.validate_neutron": [
+        {
+            "args": {
+                "repetitions": 2
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 5
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "Authenticate.validate_cinder": [
+        {
+            "args": {
+                "repetitions": 2
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 5
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "Authenticate.validate_glance": [
+        {
+            "args": {
+                "repetitions": 2
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 5
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "Authenticate.validate_heat": [
+        {
+            "args": {
+                "repetitions": 2
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 5
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ]
+}

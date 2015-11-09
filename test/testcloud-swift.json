@@ -1,0 +1,19 @@
+{
+    "SwiftObjects.create_container_and_object_then_delete_all": [
+        {
+            "args": {
+                "objects_per_container": 5,
+                "object_size": 102400
+            },
+            "runner": {
+                "type": "constant",
+                "times": 10,
+                "concurrency": 2
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ]
+}
