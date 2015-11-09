@@ -1,0 +1,84 @@
+{
+    "CinderVolumes.create_and_delete_volume": [
+        {
+            "args": {
+                "size": 1,
+                "availability_zone": "melbourne"
+            },
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 2
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        },
+        {
+            "args": {
+                "size": 10,
+                "image": {
+                    "id": "cfb066e2-9b8f-468a-bf29-e9b9336947af"
+                },
+                "availability_zone": "melbourne"
+            },
+            "runner": {
+                "type": "constant",
+                "times": 1,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "CinderVolumes.create_and_extend_volume": [
+        {
+            "args": {
+                "size": {
+                    "min": 1,
+                    "max": 5
+                },
+                "new_size": {
+                    "min": 6,
+                    "max": 10
+                },
+                "availability_zone": "melbourne"
+            },
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 2
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "CinderVolumes.create_and_attach_volume": [
+        {
+            "args": {
+                "size": 10,
+                "image": {
+                    "id": "cfb066e2-9b8f-468a-bf29-e9b9336947af"
+                },
+                "flavor": {
+                    "name": "m1.small"
+                },
+                "availability_zone": "melbourne",
+            },
+            "runner": {
+                "type": "constant",
+                "times": 5,
+                "concurrency": 1
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        },
+    ]
+}
