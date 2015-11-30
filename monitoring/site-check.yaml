@@ -1,0 +1,24 @@
+{% set flavor_name = flavor_name or "m2.tiny" %}
+{% set image_id = image_id or "eeedf697-5a41-4d91-a478-01bb21e32cbe" %}
+---
+  VMTasks.boot_runcommand_delete:
+    -
+      args:
+        flavor:
+            name: "{{flavor_name}}"
+        image:
+            id: "{{image_id}}"
+        use_floating_ip: false
+        availability_zone: "{{availability_zone}}"
+        detailed: True
+        command:
+            remote_path: "/tmp/site-check.py"
+            local_path: "site-check.py"
+        username: "ubuntu"
+      runner:
+        type: "constant"
+        times: 1
+        concurrency: 1
+      sla:
+        failure_rate:
+          max: 0
