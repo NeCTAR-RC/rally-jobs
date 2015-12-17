@@ -1,5 +1,7 @@
 {% set flavor_name = flavor_name or "m2.tiny" %}
 {% set image_id = image_id or "eeedf697-5a41-4d91-a478-01bb21e32cbe" %}
+{% set max_avg_duration = max_avg_duration or 150 %}
+{% set max_seconds_per_iteration = max_seconds_per_iteration or 300 %}
 ---
   VMTasks.boot_runcommand_delete:
     -
@@ -20,5 +22,7 @@
         times: 1
         concurrency: 1
       sla:
+        max_avg_duration: {{max_avg_duration}}
+        max_seconds_per_iteration: {{max_seconds_per_iteration}}
         failure_rate:
           max: 0
