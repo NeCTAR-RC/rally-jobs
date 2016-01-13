@@ -20,7 +20,7 @@
       runner:
         type: "constant"
         times: 3
-        concurrency: 1
+        concurrency: 2
       sla:
         max_avg_duration: {{max_avg_duration}}
         max_seconds_per_iteration: {{max_seconds_per_iteration}}
