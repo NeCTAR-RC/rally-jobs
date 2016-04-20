@@ -3,7 +3,7 @@
         {
             "args": {
                 "size": 1,
-                "availability_zone": "melbourne"
+                "availability_zone": "coreservices"
             },
             "runner": {
                 "type": "constant",
@@ -21,7 +21,7 @@
                 "image": {
                     "id": "cfb066e2-9b8f-468a-bf29-e9b9336947af"
                 },
-                "availability_zone": "melbourne"
+                "availability_zone": "coreservices"
             },
             "runner": {
                 "type": "constant",
@@ -45,12 +45,53 @@
                     "min": 6,
                     "max": 10
                 },
-                "availability_zone": "melbourne"
+                "availability_zone": "coreservices"
             },
             "runner": {
                 "type": "constant",
                 "times": 2,
                 "concurrency": 2
+            },
+            "context": {},
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "CinderVolumes.create_and_delete_snapshot": [
+        {
+            "args": {
+                "force": false
+            },
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 2
+            },
+            "context": {
+                "volumes": {
+                    "size": 1,
+                    "availability_zone": "coreservices",
+                }
+            },
+            "sla": {
+                "failure_rate": {"max": 0.0}
+            }
+        }
+    ],
+    "CinderVolumes.create_and_restore_volume_backup": [
+        {
+            "args": {
+                "size": 1,
+                "do_delete": true,
+                "create_volume_kwargs": {
+                    "availability_zone": "coreservices",
+                },
+            },
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 1
             },
             "context": {},
             "sla": {
@@ -68,7 +109,7 @@
                 "flavor": {
                     "name": "m1.small"
                 },
-                "availability_zone": "melbourne",
+                "availability_zone": "coreservices",
             },
             "runner": {
                 "type": "constant",
