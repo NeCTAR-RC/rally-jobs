@@ -1,5 +1,5 @@
 {% set flavor_name = flavor_name or "m2.tiny" %}
-{% set image_id = image_id or "eeedf697-5a41-4d91-a478-01bb21e32cbe" %}
+{% set image_id = image_id or "ed01445a-792e-4a69-8868-9ffa5e7e0c06" %}
 {% set max_avg_duration = max_avg_duration or 150 %}
 {% set max_seconds_per_iteration = max_seconds_per_iteration or 300 %}
 ---
@@ -14,13 +14,13 @@
         availability_zone: "{{availability_zone}}"
         detailed: True
         command:
-            remote_path: "/tmp/site-check.py"
-            local_path: "site-check.py"
-        username: "ubuntu"
+            remote_path: "/tmp/site-check.sh"
+            local_path: "site-check.sh"
+        username: "cirros"
       runner:
         type: "constant"
         times: 3
-        concurrency: 2
+        concurrency: 3
       sla:
         max_avg_duration: {{max_avg_duration}}
         max_seconds_per_iteration: {{max_seconds_per_iteration}}
