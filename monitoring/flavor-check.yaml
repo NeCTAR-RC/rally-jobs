@@ -1,4 +1,4 @@
-{% set image_id = image_id or "ed01445a-792e-4a69-8868-9ffa5e7e0c06" %}
+{% set image_id = image_id or "eeedf697-5a41-4d91-a478-01bb21e32cbe" %}
 {% set max_avg_duration = max_avg_duration or 150 %}
 {% set max_seconds_per_iteration = max_seconds_per_iteration or 300 %}
 ---
@@ -14,7 +14,7 @@
         command:
             remote_path: "/tmp/site-check.sh"
             local_path: "site-check.sh"
-        username: "cirros"
+        username: "ubuntu"
       runner:
         type: "constant"
         times: 1
